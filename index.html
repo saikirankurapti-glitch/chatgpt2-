@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#071426" />
+  <meta name="description" content="Chat with the GenQuantaa Academy AI assistant, powered by n8n." />
+  <title>GenQuantaa Academy | AI Chat Assistant</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" />
+  <style>
+    :root { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #eaf3ff; background: #071426; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: radial-gradient(circle at 15% 5%, #12335c 0, transparent 38%), #071426; }
+    .shell { max-width: 1280px; min-height: 100vh; margin: auto; padding: 22px clamp(18px, 4vw, 48px) 38px; display: flex; flex-direction: column; }
+    header { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-bottom: 22px; border-bottom: 1px solid #ffffff18; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; font-weight: 800; letter-spacing: -.4px; font-size: 20px; }
+    .logo { display: grid; place-items: center; height: 43px; width: 43px; background: linear-gradient(135deg,#14d3e3,#2676fc); border-radius: 13px; font-weight: 900; color: #06223a; }
+    .pill { color: #9ed8e9; border: 1px solid #24617a; background: #0e3047; padding: 8px 13px; border-radius: 30px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+    main { flex: 1; display: grid; grid-template-columns: minmax(280px, .82fr) minmax(360px, 1.18fr); align-items: center; gap: clamp(28px, 6vw, 85px); padding: 44px 0 26px; }
+    .intro { max-width: 470px; }
+    .eyebrow { color: #47deea; font-size: 12px; font-weight: 800; letter-spacing: .17em; text-transform: uppercase; }
+    h1 { font-size: clamp(36px, 4.4vw, 64px); line-height: 1.08; letter-spacing: -.045em; margin: 18px 0; }
+    h1 span { color: #44d7e9; }
+    .lead { font-size: 16px; line-height: 1.75; color: #afc1d9; }
+    .features { display: grid; gap: 13px; margin-top: 32px; }
+    .feature { display: flex; align-items: center; gap: 12px; color: #dbe9ff; font-size: 14px; }
+    .tick { display: grid; place-items: center; flex: 0 0 auto; width: 29px; height: 29px; color: #35e2df; background: #12404f; border-radius: 9px; font-weight: 800; }
+    .chat-frame { width: 100%; height: min(670px, 76vh); min-height: 480px; display: flex; flex-direction: column; overflow: hidden; background: #fff; border: 1px solid #2b5574; border-radius: 21px; box-shadow: 0 30px 90px #0007; }
+    .frame-head { padding: 14px 18px; background: #0b2643; display: flex; gap: 10px; align-items: center; }
+    .avatar { height: 38px; width: 38px; border-radius: 12px; display: grid; place-items: center; background: linear-gradient(135deg,#13cfdd,#237dff); color: #06243b; font-size: 19px; }
+    .frame-head strong { display: block; font-size: 14px; }
+    .frame-head small { display: block; color: #9fc1d0; margin-top: 3px; font-size: 11px; }
+    .status { width: 9px; height: 9px; border-radius: 50%; background: #39daac; margin-left: auto; }
+    #n8n-chat { flex: 1; min-height: 0; width: 100%; position: relative; color: #102b43;
+      --chat--color-primary: #137bb8;
+      --chat--color-primary-shade-50: #0867a0;
+      --chat--color-secondary: #16b7c9;
+      --chat--color-white: #fff;
+      --chat--color-light: #f2f7fb;
+      --chat--color-dark: #102b43;
+      --chat--border-radius: 10px;
+      --chat--spacing: 1rem;
+      --chat--header--background: #fff;
+      --chat--header--color: #15324b;
+      --chat--message--bot--background: #edf5fb;
+      --chat--message--bot--color: #17334b;
+      --chat--message--user--background: #137bb8;
+      --chat--message--user--color: #fff;
+    }
+    #n8n-chat .chat-window { width: 100%; height: 100%; max-height: none; box-shadow: none; border-radius: 0; }
+    #n8n-chat .chat-layout { height: 100%; }
+    footer { color: #7792ad; border-top: 1px solid #ffffff18; padding-top: 18px; text-align: center; font-size: 12px; }
+    .error { display: none; padding: 20px; color: #9b273b; background: #fff0f2; line-height: 1.5; }
+    .error.show { display: block; }
+    @media(max-width: 820px) { main { grid-template-columns: 1fr; padding-top: 30px; gap: 28px; } .intro { max-width: none; } h1 { max-width: 610px; } .chat-frame { height: 620px; min-height: 480px; } }
+    @media(max-width: 480px) { .shell { padding-inline: 14px; } .brand { font-size: 17px; } .pill { font-size: 10px; padding: 7px 9px; } .chat-frame { height: 600px; } .lead { font-size: 15px; } }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <a class="brand" href="/" aria-label="GenQuantaa Academy home"><span class="logo" aria-hidden="true">G</span> GenQuantaa Academy</a>
+      <span class="pill">AI-powered support</span>
+    </header>
+    <main>
+      <section class="intro" aria-labelledby="headline">
+        <div class="eyebrow">Welcome to our AI assistant</div>
+        <h1 id="headline">Questions? <span>Let's chat.</span></h1>
+        <p class="lead">Meet your GenQuantaa Academy chat assistant. Ask about courses, learning paths, enrollment, or anything else you want to know.</p>
+        <div class="features">
+          <div class="feature"><span class="tick">✓</span> Chat directly inside this application</div>
+          <div class="feature"><span class="tick">✓</span> Powered by your existing n8n workflow</div>
+          <div class="feature"><span class="tick">✓</span> Easy to use on mobile and desktop</div>
+        </div>
+      </section>
+      <section class="chat-frame" aria-label="AI chat assistant">
+        <div class="frame-head"><span class="avatar" aria-hidden="true">✦</span><div><strong>Academy AI Assistant</strong><small>Ask me anything</small></div><span class="status" title="Chat interface available"></span></div>
+        <div id="n8n-chat"></div>
+        <div id="chat-error" class="error" role="alert">The chat interface could not load. Check your internet connection and try refreshing this page.</div>
+      </section>
+    </main>
+    <footer>© GenQuantaa Academy · Powered by n8n</footer>
+  </div>
+  <script type="module">
+    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+    const webhookUrl = 'https://genquantaa.app.n8n.cloud/webhook/a8ab8ab0-47a4-4353-9fd5-2edff4d02882/chat';
+    try {
+      createChat({
+        webhookUrl,
+        target: '#n8n-chat',
+        mode: 'fullscreen',
+        showWelcomeScreen: false,
+        loadPreviousSession: true,
+        defaultLanguage: 'en',
+        initialMessages: ['Hi! 👋 Welcome to GenQuantaa Academy. How can I help you today?'],
+        i18n: {
+          en: {
+            title: 'Academy AI Assistant',
+            subtitle: 'Ask about courses, enrollment and more.',
+            footer: '',
+            getStarted: 'Start chatting',
+            inputPlaceholder: 'Type your message...',
+            closeButtonTooltip: 'Close chat'
+          }
+        }
+      });
+    } catch (error) {
+      console.error('n8n chat initialization failed', error);
+      document.querySelector('#chat-error').classList.add('show');
+    }
+  </script>
+</body>
+</html>
