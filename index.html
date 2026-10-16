@@ -40,20 +40,8 @@
       --chat--message--bot--background:#eaf3fc; --chat--message--bot--color:#17354e;
       --chat--message--user--background:#0c81b5; --chat--message--user--color:#fff;
     }
-    #n8n-chat .chat-window { width:100%; height:100%; max-height:100%; min-height:0; position:relative; display:flex; flex-direction:column; box-shadow:none; border:0; border-radius:0; }
-    #n8n-chat .chat-layout { display:flex; flex-direction:column; flex:1 1 auto; min-height:0; height:100%; overflow:hidden; }
-    #n8n-chat .chat-header { flex:0 0 auto; padding:12px 20px; border-bottom:1px solid #e5edf4; }
-    #n8n-chat .chat-body { flex:1 1 auto; min-height:0; overflow-y:auto; overflow-x:hidden; background:#f7faff; }
-    #n8n-chat .chat-messages-list { padding:22px 20px 24px; display:flex; flex-direction:column; gap:13px; }
-    #n8n-chat .chat-message { max-width:88%; line-height:1.55; border-radius:16px; overflow-wrap:anywhere; }
-    #n8n-chat .chat-message.chat-message-from-bot { border:1px solid #dfebf5; }
-    #n8n-chat .chat-message.chat-message-from-user { margin-left:auto; }
-    #n8n-chat .chat-footer { flex:0 0 auto; min-height:82px; z-index:3; padding:12px 16px 14px; background:#fff; border-top:1px solid #e1eaf2; }
-    #n8n-chat .chat-input { border:1px solid #dbe6ee; border-radius:15px; background:#fff; box-shadow:0 1px 3px #0a294408; }
-    #n8n-chat .chat-input textarea { color:#133047; font-size:14px; }
-    #n8n-chat .chat-input:focus-within { border-color:#16a5ce; box-shadow:0 0 0 3px #16a5ce1c; }
-    #n8n-chat .chat-input button { color:#0b8ab9; }
-    #n8n-chat .chat-powered-by { display:none; }
+    /* Let the official @n8n/chat stylesheet control its internal layout. */
+    #n8n-chat .chat-window { width:100%; height:100%; max-height:100%; border:0; border-radius:0; box-shadow:none; }
     footer { color:#88a4bc; border-top:1px solid #ffffff18; padding-top:16px; text-align:center; font-size:12px; }
     .error { display:none; padding:20px; background:#fff0f2; color:#9b273b; }
     .error.show { display:block; }
