@@ -17,7 +17,7 @@ Then visit http://localhost:3000.
 The chat widget connects to:
 
 ```text
-https://genquantaa.app.n8n.cloud/webhook/a8ab8ab0-47a4-4353-9fd5-2edff4d02882/chat
+https://genquantaa.app.n8n.cloud/webhook/1b3908a4-532c-4ed2-b816-4ef995d06173/chat
 ```
 
 In n8n:
