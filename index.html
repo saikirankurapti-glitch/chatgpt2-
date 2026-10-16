@@ -49,7 +49,11 @@
       --chat--message--user--color: #fff;
     }
     #n8n-chat .chat-window { width: 100%; height: 100%; max-height: none; box-shadow: none; border-radius: 0; }
-    #n8n-chat .chat-layout { height: 100%; }
+    #n8n-chat .chat-layout { height: 100%; min-height: 0; display: flex; flex-direction: column; }
+    /* Keep the message composer visible inside the embedded, fixed-height chat. */
+    #n8n-chat .chat-window { display: flex; flex-direction: column; min-height: 0; }
+    #n8n-chat .chat-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+    #n8n-chat .chat-footer { flex: 0 0 auto; flex-shrink: 0; position: relative; z-index: 2; }
     footer { color: #7792ad; border-top: 1px solid #ffffff18; padding-top: 18px; text-align: center; font-size: 12px; }
     .error { display: none; padding: 20px; color: #9b273b; background: #fff0f2; line-height: 1.5; }
     .error.show { display: block; }
